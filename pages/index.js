@@ -3,6 +3,8 @@ import Link from 'next/link'  //Optimizes the page rendering using prefetch. It 
 
 const Index = () => {
     return (
+
+        <p>adicionando uma linha</p>
         <div>
             <p className='mt-12 text-center font-bold'>
                 O restaurante X sempre busca por atender melhor seus clientes.<br />

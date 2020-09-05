@@ -22,7 +22,7 @@ const Index = () => {
             {data && data.showCoupon &&
                 <p className='my-12 text-center'>
                     {data.message}
-            </p>
+                </p>
             }
         </div>
     )

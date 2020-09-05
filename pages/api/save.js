@@ -22,29 +22,29 @@ export default async (req, res) => {
         const configSheet = doc.sheetsByIndex[2]
         await configSheet.loadCells('C3:C4')
         
-        const textoPromoCell = configSheet.getCell(3, 2)
-        const ativarPromoCell = configSheet.getCell(2, 2)
+        const promoMessageCell = configSheet.getCell(3, 2)
+        const activatePromoCell = configSheet.getCell(2, 2)
 
-        let Cupom = ''
+        let Coupon = ''
         let Promo = ''
 
-        if(ativarPromoCell.value === true){
-            Cupom = genCoupon()
-            Promo = textoPromoCell.value
+        if(activatePromoCell.value === true){
+            Coupon = genCoupon()
+            Promo = promoMessageCell.value
         }
 
         await sheet.addRow({
             Name: data.Name,
             Email: data.Email,
             Whatsapp: data.Whatsapp,
-            Score: 5,
+            Score: parseInt(data.Score),
             'Data Preenchimento' : moment().format('DD/MM/YYYY, HH:mm:ss'),
-            Cupom,
+            Coupon,
             Promo
         })
         res.end(JSON.stringify({
-            showCoupon: Cupom !== '',
-            Cupom,
+            showCoupon: Coupon !== '',
+            Coupon,
             Promo
         }))
     }

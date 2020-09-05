@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'  //Optimizes the page rendering using prefetch. It loads the page before the user clicks the link.
 import useSWR from 'swr'
+import PageTitle from '../components/PageTitle'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -9,16 +10,21 @@ const Index = () => {
 
     return (
         <div>
+            <PageTitle title='Welcome!' />
             <p className='mt-12 text-center font-bold'>
                 Restaurant X always seeks to better serve its customers. <br />
                 This is is why we are always open to hear what you think.
             </p>
             <div className='text-center my-12'>
-                <Link href='/pesquisa'>
-                    <a className='bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'>Give an opinion/suggestion</a>
+                <Link href='/reviews'>
+                    <a className='bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'>
+                        Give your review or suggestion
+                    </a>
                 </Link>
             </div>
+
             {!data && <p>Loading...</p>}
+            
             {data && data.showCoupon &&
                 <p className='my-12 text-center'>
                     {data.message}

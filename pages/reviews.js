@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import Link from 'next/link'
+import PageTitle from '../components/PageTitle'
 
-const Pesquisa = () => {
+const Review = () => {
     const [form, setForm] = useState({
         Name: '',
         Email: '',
         Whatsapp: '',
-        Score: 5
+        Score: 0
     })
+
+    const scores = [0, 1, 2, 3, 4, 5]
 
     const [sucess, setSuccess] = useState(false)
     const [dataReturn, setDataReturn] = useState({})
@@ -38,12 +40,14 @@ const Pesquisa = () => {
 
     return (
         <div className='pt-6'>
-            <h1 className='text-2xl text-center font-bold my-4'>Críticas e Sugestões</h1>
+            <PageTitle title='Reviews' />
+            <h1 className='text-2xl text-center font-bold my-4'>Reviews and Suggestions</h1>
 
             <p className='text-center mb-6'>
-            Restaurant X always seeks to better serve its customers. <br />
-            This is is why we are always open to hear what you think.
+                Restaurant X always seeks to better serve its customers. <br />
+                This is is why we are always open to hear what you think.
             </p>
+
             {!sucess &&
                 <div className='w-1/5 mx-auto'>
                     <label className='font-bold'>Name:</label>
@@ -55,26 +59,41 @@ const Pesquisa = () => {
                     <label className='font-bold'>Whatsapp:</label>
                     <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Whatsapp'
                         onChange={onChange} name='Whatsapp' value={form.Whatsapp} />
-                    <button className='bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow' onClick={save} >Salvar</button>
+                    <label className='font-bold'>Score:</label>
+
+                    <div className='flex p-3 w-4/5 shadow bg-blue-100 my-2 rounded'>
+                        {scores.map(score => {
+                            return (
+                                <label className='block text-center mr-5'>
+                                    {score} <br />
+                                    <input type='radio' name='Score' value={score} onChange={onChange} />
+                                </label>
+                            )
+                        })
+                        }
+                    </div>
+
+                    <button className='m-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow' onClick={save}>Save</button>
                 </div>
             }
+
             {sucess &&
                 <div className='mb-6 text-center w-1/5 mx-auto bg-blue-100 border-t-2 border-b-2 border-blue-500 text-blue-700'>
                     <p className="font-bold mt-8">Sent!</p>
-                    <p className="text-sm mb-8">Thank you for letting us know your opinion / suggestion!</p>
+                    <p className="text-sm mb-8">Thank you for letting us know your opinion!</p>
                     {
                         dataReturn.showCoupon &&
                         <div className='text-center border-dashed border-2 pt-10 pb-10 mb-2'>
-                                Your coupon number is: <br />
-                                <span className='font-bold text-2xl'>{dataReturn.Cupom}</span>
+                            Your coupon number is: <br />
+                            <span className='font-bold text-2xl'>{dataReturn.Coupon}</span>
                         </div>
                     }
                     {
                         dataReturn.showCoupon &&
                         <div className='text-center p-4 mb-6'>
-                                Your promo: <br />
-                                <span className='font-bold block mb-8'>{dataReturn.Promo}</span>
-                                <p className='italic'>Print this screen and show it to one of our waiters.</p>
+                            Your promo: <br />
+                            <span className='font-bold block mb-8'>{dataReturn.Promo}</span>
+                            <p className='italic'>Print this screen and show it to one of our waiters.</p>
                         </div>
                     }
                 </div>
@@ -83,4 +102,4 @@ const Pesquisa = () => {
     )
 }
 
-export default Pesquisa
+export default Review

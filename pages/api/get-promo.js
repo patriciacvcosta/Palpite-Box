@@ -11,12 +11,12 @@ export default async (req, res) => {
         const configSheet = doc.sheetsByIndex[2]
         await configSheet.loadCells('C3:C4')
 
-        const ativarPromoCell = configSheet.getCell(2, 2)
-        const textoPromoCell = configSheet.getCell(3, 2)
+        const activatePromoCell = configSheet.getCell(2, 2)
+        const promoMessageCell = configSheet.getCell(3, 2)
 
         res.end(JSON.stringify({
-            showCoupon: ativarPromoCell.value === true,
-            message: textoPromoCell.value
+            showCoupon: activatePromoCell.value === true,
+            message: promoMessageCell.value
         }))
     } catch (err) {
         res.end(JSON.stringify({
@@ -24,8 +24,5 @@ export default async (req, res) => {
             message: ''
         }))
     }
-
-
-
 
 }

@@ -1,17 +1,19 @@
 import React from 'react'
 import Link from 'next/link'
+import PageTitle from '../components/PageTitle'
 
-const Contato = () => {
-    return(
+const About = () =>{
+    return (
         <div>
-            <h1>Contato</h1>
+            <PageTitle title='About' />
+            <h1>About</h1>
             <div>
                 <Link href='/'>
                     <a>Home</a>
                 </Link>
             </div>
-        </div>
+        </div>  
     )
 }
 
-export default Contato
+export default About

@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div className='bg-gray-700 p-4'>
             <div className='container mx-auto text-center font-bold text-white'>
-                Projeto desenvolvido por:
+                Developed by:
                 Patricia Costa / {' '}
                 <a className='hover:underline' href='https://www.linkedin.com/in/patricia-costa-885038a0/'>LinkedIn</a> / {' '}
                 <a className='hover:underline' href='https://github.com/patriciacvcosta'>Github</a>

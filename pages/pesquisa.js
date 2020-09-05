@@ -3,17 +3,25 @@ import Link from 'next/link'
 
 const Pesquisa = () => {
     const [form, setForm] = useState({
-        Nome: '',
+        Name: '',
         Email: '',
-        Whatsapp: ''
+        Whatsapp: '',
+        Score: 5
     })
+
+    const [sucess, setSuccess] = useState(false)
+    const [dataReturn, setDataReturn] = useState({})
+
     const save = async () => {
         try {
             const response = await fetch('/api/save', {
                 method: 'POST',
                 body: JSON.stringify(form)
             })
+
             const data = await response.json()
+            setSuccess(true)
+            setDataReturn(data)
         }
         catch (err) {
         }
@@ -33,22 +41,44 @@ const Pesquisa = () => {
             <h1 className='text-2xl text-center font-bold my-4'>Críticas e Sugestões</h1>
 
             <p className='text-center mb-6'>
-                O restaurante X sempre busca por atender melhor seus clientes.<br />
-                Por isso, estamos sempre abertos a ouvir a sua opinião.
+            Restaurant X always seeks to better serve its customers. <br />
+            This is is why we are always open to hear what you think.
             </p>
-
-            <div className='w-1/5 mx-auto'>
-                <label className='font-bold'>Nome:</label>
-                <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Nome' 
-                onChange={onChange} name='Nome' value={form.Nome} />
-                <label className='font-bold'>Email:</label>
-                <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Email' 
-                onChange={onChange} name='Email' value={form.Email}/>
-                <label className='font-bold'>Whatsapp:</label>
-                <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Whatsapp' 
-                onChange={onChange} name='Whatsapp' value={form.Whatsapp}/>
-                <button className='bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow' onClick={save} >Salvar</button>
-            </div>
+            {!sucess &&
+                <div className='w-1/5 mx-auto'>
+                    <label className='font-bold'>Name:</label>
+                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Name'
+                        onChange={onChange} name='Name' value={form.Name} />
+                    <label className='font-bold'>Email:</label>
+                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Email'
+                        onChange={onChange} name='Email' value={form.Email} />
+                    <label className='font-bold'>Whatsapp:</label>
+                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Whatsapp'
+                        onChange={onChange} name='Whatsapp' value={form.Whatsapp} />
+                    <button className='bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow' onClick={save} >Salvar</button>
+                </div>
+            }
+            {sucess &&
+                <div className='mb-6 text-center w-1/5 mx-auto bg-blue-100 border-t-2 border-b-2 border-blue-500 text-blue-700'>
+                    <p className="font-bold mt-8">Sent!</p>
+                    <p className="text-sm mb-8">Thank you for letting us know your opinion / suggestion!</p>
+                    {
+                        dataReturn.showCoupon &&
+                        <div className='text-center border-dashed border-2 pt-10 pb-10 mb-2'>
+                                Your coupon number is: <br />
+                                <span className='font-bold text-2xl'>{dataReturn.Cupom}</span>
+                        </div>
+                    }
+                    {
+                        dataReturn.showCoupon &&
+                        <div className='text-center p-4 mb-6'>
+                                Your promo: <br />
+                                <span className='font-bold block mb-8'>{dataReturn.Promo}</span>
+                                <p className='italic'>Print this screen and show it to one of our waiters.</p>
+                        </div>
+                    }
+                </div>
+            }
         </div>
     )
 }

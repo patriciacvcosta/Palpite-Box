@@ -34,10 +34,10 @@ export default async (req, res) => {
         }
 
         await sheet.addRow({
-            Nome: data.Nome,
+            Name: data.Name,
             Email: data.Email,
             Whatsapp: data.Whatsapp,
-            Nota: 5,
+            Score: 5,
             'Data Preenchimento' : moment().format('DD/MM/YYYY, HH:mm:ss'),
             Cupom,
             Promo

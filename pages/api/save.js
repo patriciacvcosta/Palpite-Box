@@ -19,7 +19,7 @@ export default async (req, res) => {
         await doc.loadInfo()
         const sheet = doc.sheetsByIndex[1]
 
-        // Infos needed on google sheet: Nome	Email	Whatsapp	Cupom	Promo
+        // Infos needed on google sheet: Nome	Email	Phone	Cupom	Promo
         const data = JSON.parse(req.body)
 
         const configSheet = doc.sheetsByIndex[2]
@@ -39,12 +39,13 @@ export default async (req, res) => {
         await sheet.addRow({
             Name: data.Name,
             Email: data.Email,
-            Whatsapp: data.Whatsapp,
+            Phone: data.Phone,
             Score: parseInt(data.Score),
-            'Data Preenchimento': moment().format('DD/MM/YYYY, HH:mm:ss'),
+            'Review Date': moment().format('DD/MM/YYYY, HH:mm:ss'),
             Coupon,
             Promo
         })
+        
         res.end(JSON.stringify({
             showCoupon: Coupon !== '',
             Coupon,
@@ -54,8 +55,5 @@ export default async (req, res) => {
     catch (err) {
         console.log(err)
         res.end('error')
-
     }
-
-
 }

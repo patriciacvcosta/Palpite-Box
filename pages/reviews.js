@@ -5,7 +5,7 @@ const Review = () => {
     const [form, setForm] = useState({
         Name: '',
         Email: '',
-        Whatsapp: '',
+        Phone: '',
         Score: 0
     })
 
@@ -56,9 +56,9 @@ const Review = () => {
                     <label className='font-bold'>Email:</label>
                     <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Email'
                         onChange={onChange} name='Email' value={form.Email} />
-                    <label className='font-bold'>Whatsapp:</label>
-                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Whatsapp'
-                        onChange={onChange} name='Whatsapp' value={form.Whatsapp} />
+                    <label className='font-bold'>Phone:</label>
+                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Phone'
+                        onChange={onChange} name='Phone' value={form.Phone} />
                     <label className='font-bold'>Score:</label>
 
                     <div className='flex p-3 w-4/5 shadow bg-blue-100 my-2 rounded'>

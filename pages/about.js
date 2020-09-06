@@ -6,12 +6,7 @@ const About = () =>{
     return (
         <div>
             <PageTitle title='About' />
-            <h1>About</h1>
-            <div>
-                <Link href='/'>
-                    <a>Home</a>
-                </Link>
-            </div>
+            <h1>About the restaurant...</h1>
         </div>  
     )
 }

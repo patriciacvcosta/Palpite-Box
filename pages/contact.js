@@ -6,12 +6,7 @@ const Contact = () => {
     return(
         <div>
             <PageTitle title='Contact' />
-            <h1>Contact</h1>
-            <div>
-                <Link href='/'>
-                    <a>Home</a>
-                </Link>
-            </div>
+            <h1>Restaurant contact...</h1>
         </div>
     )
 }

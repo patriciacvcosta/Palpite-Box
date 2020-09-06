@@ -37,7 +37,7 @@ export default async (req, res) => {
         }
 
         await sheet.addRow({
-            Name: data.Name,
+            'Full Name': data.FullName,
             Email: data.Email,
             Phone: data.Phone,
             Score: parseInt(data.Score),
@@ -45,7 +45,7 @@ export default async (req, res) => {
             Coupon,
             Promo
         })
-        
+
         res.end(JSON.stringify({
             showCoupon: Coupon !== '',
             Coupon,

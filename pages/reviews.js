@@ -3,7 +3,7 @@ import PageTitle from '../components/PageTitle'
 
 const Review = () => {
     const [form, setForm] = useState({
-        Name: '',
+        'Full Name': '',
         Email: '',
         Phone: '',
         Score: 0
@@ -50,9 +50,9 @@ const Review = () => {
 
             {!sucess &&
                 <div className='w-1/5 mx-auto'>
-                    <label className='font-bold'>Name:</label>
-                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Name'
-                        onChange={onChange} name='Name' value={form.Name} />
+                    <label className='font-bold'>Full Name:</label>
+                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='FullName'
+                        onChange={onChange} name='FullName' value={form.FullName} />
                     <label className='font-bold'>Email:</label>
                     <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Email'
                         onChange={onChange} name='Email' value={form.Email} />

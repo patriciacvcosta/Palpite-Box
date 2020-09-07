@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import PageTitle from '../components/PageTitle'
+import { useForm } from "react-hook-form";
 
 const Review = () => {
     const [form, setForm] = useState({
-        'Full Name': '',
+        FullName: '',
         Email: '',
         Phone: '',
         Score: 0
@@ -32,49 +33,70 @@ const Review = () => {
     const onChange = evt => {
         const value = evt.target.value
         const key = evt.target.name
+
         setForm(old => ({
             ...old, //gets everything from the old form and copies
             [key]: value
         }))
     }
 
+    const { register, handleSubmit, errors } = useForm();
+
     return (
         <div className='pt-6'>
             <PageTitle title='Reviews' />
             <h1 className='text-2xl text-center font-bold my-4'>Reviews and Suggestions</h1>
-
             <p className='text-center mb-6'>
                 Restaurant X always seeks to better serve its customers. <br />
                 This is is why we are always open to hear what you think.
             </p>
 
             {!sucess &&
-                <div className='w-1/5 mx-auto'>
+                <form className='w-1/5 mx-auto' onSubmit={handleSubmit(save)}>
+
                     <label className='font-bold'>Full Name:</label>
-                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='FullName'
-                        onChange={onChange} name='FullName' value={form.FullName} />
+                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Full Name'
+                        onChange={onChange} name='FullName' defaultValue={form.FullName} ref={register({ required: true, minLength: 2 })} />
+                    {errors.FullName && 
+                        <span className='block italic bold pb-4 text-red-500 text-xs'>
+                            This field is required and must have at least 2 characters.
+                        </span>
+                    }
+                    
                     <label className='font-bold'>Email:</label>
                     <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Email'
-                        onChange={onChange} name='Email' value={form.Email} />
-                    <label className='font-bold'>Phone:</label>
-                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Phone'
-                        onChange={onChange} name='Phone' value={form.Phone} />
-                    <label className='font-bold'>Score:</label>
+                        onChange={onChange} name='Email' defaultValue={form.Email} ref={register({ required: true })} />
+                    {errors.Email && 
+                        <span className='block italic bold pb-4 text-red-500 text-xs'>
+                            This field is required
+                        </span>
+                    }
 
+                    <label className='font-bold'>Phone:</label>
+                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='(xxx) xxx-xxxx'
+                        onChange={onChange} name='Phone' defaultValue={form.Phone} 
+                        ref={register({ required: true, pattern: /^(\(\d{3}\)\s\d{3}\-\d{4})$/ })} />
+                    {errors.Phone && 
+                        <span className='block italic bold pb-4 text-red-500 text-xs'>
+                            The phone must be entered using the following pattern: (xxx) xxx-xxxx
+                        </span>
+                    }
+
+                    <label className='font-bold'>Score:</label>
                     <div className='flex p-3 w-4/5 shadow bg-blue-100 my-2 rounded'>
                         {scores.map(score => {
                             return (
-                                <label className='block text-center mr-5'>
+                                <label key={'score-' + score.toString()} className='block text-center mr-5'>
                                     {score} <br />
-                                    <input type='radio' name='Score' value={score} onChange={onChange} />
+                                    <input type='radio' name='Score' value={score} onChange={onChange} ref={register({ required: true })} />
                                 </label>
                             )
-                        })
-                        }
+                        })}
                     </div>
+                    {errors.Score  && <span className='block italic bold pb-4 text-red-500 text-xs'>This field is required</span>}
 
-                    <button className='m-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow' onClick={save}>Save</button>
-                </div>
+                    <button type='submit' className='m-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'>Save</button>
+                </form>
             }
 
             {sucess &&

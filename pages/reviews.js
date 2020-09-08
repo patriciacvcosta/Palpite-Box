@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PageTitle from '../components/PageTitle'
 import { useForm } from "react-hook-form";
+import MaskedInput from 'react-text-mask'
 
 const Review = () => {
     const [form, setForm] = useState({
@@ -107,8 +108,10 @@ const Review = () => {
                     }
 
                     <label className='font-bold'>Phone:</label>
-                    <input
+                    <MaskedInput
                         type='text'
+                        mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+                        guide={true}
                         className='p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='(xxx) xxx-xxxx'
                         onChange={onChange}

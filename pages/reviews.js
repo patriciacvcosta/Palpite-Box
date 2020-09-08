@@ -108,10 +108,8 @@ const Review = () => {
                     }
 
                     <label className='font-bold'>Phone:</label>
-                    <MaskedInput
+                    <input
                         type='text'
-                        mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-                        guide={true}
                         className='p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='(xxx) xxx-xxxx'
                         onChange={onChange}

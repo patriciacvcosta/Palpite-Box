@@ -117,14 +117,21 @@ const Review = () => {
                         defaultValue={form.Phone}
                         ref={
                             register({
-                                required: true,
-                                pattern: /^(\(\d{3}\)\s\d{3}\-\d{4})$/
+                                required: true
                             })
                         }
+
                     />
+                    
+
+                    {/* <MaskedInput 
+                        ref={ref => ref && register(ref.inputElement, registerProps)} name={Phone} 
+                    /> */}
+
+
                     {errors.Phone &&
                         <span className='block italic bold pb-4 text-red-500 text-xs'>
-                            Phone is required and must be entered using the following pattern: (xxx) xxx-xxxx.
+                            Phone is required.
                         </span>
                     }
 
@@ -157,20 +164,20 @@ const Review = () => {
 
                     <button type='submit'
                         className={
-                            showLoading 
+                            showLoading
                                 ? 'm-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow hidden'
                                 : 'm-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'
                         }
-                    >                            
+                    >
                         Save
                     </button>
 
                     <span className={
-                            showLoading 
-                                ? "inline-flex rounded-md shadow-sm" 
-                                : "inline-flex rounded-md shadow-sm hidden"
-                            }
-                        >
+                        showLoading
+                            ? "inline-flex rounded-md shadow-sm"
+                            : "inline-flex rounded-md shadow-sm hidden"
+                    }
+                    >
                         <button type="button"
                             className="inline-flex m-6 bg-blue-400 px-6 py-4 font-bold rounded-lg shadow-lg hover:shadow cursor-not-allowed"
                             disabled="">
@@ -180,7 +187,7 @@ const Review = () => {
                                 fill="none"
                                 viewBox="0 0 24 24">
                                 <circle
-                                    className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                                    className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4">
                                 </circle>
                                 <path
                                     className="opacity-75"

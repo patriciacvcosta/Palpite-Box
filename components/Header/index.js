@@ -19,11 +19,11 @@ const Header = () => {
                 <Link href='/contact'>
                     <a className='px-2 hover:underline'>Contact</a>
                 </Link>
-                <Link href='/reviews' prefetch='false'>
+                {/* <Link href='/reviews' prefetch='false'>
                     <a className='px-2 hover:underline'>Reviews</a>
-                </Link>
+                </Link> */}
 
-                {/* <a href='/reviews' className='px-2 hover:underline'>Reviews</a> */}
+                <a href='/reviews' className='px-2 hover:underline'>Reviews</a>
             </div>
         </React.Fragment>
     )

@@ -37,6 +37,8 @@ const Review = () => {
         const value = evt.target.value
         const key = evt.target.name
 
+
+
         setForm(old => ({
             ...old, //gets everything from the old form and copies
             [key]: value
@@ -117,23 +119,24 @@ const Review = () => {
                         defaultValue={form.Phone}
                         ref={
                             register({
-                                required: true
+                                required: true,
+                                pattern: /^(\(\d{3}\)\s\d{3}\-\d{4})$/
                             })
                         }
-
                     />
-                    
+                    {errors.Phone &&
+                        <span className='block italic bold pb-4 text-red-500 text-xs'>
+                            Phone is required and must follow the pattern: (xxx) xxx-xxxx.
+                        </span>
+                    }
+
+
 
                     {/* <MaskedInput 
                         ref={ref => ref && register(ref.inputElement, registerProps)} name={Phone} 
                     /> */}
 
 
-                    {errors.Phone &&
-                        <span className='block italic bold pb-4 text-red-500 text-xs'>
-                            Phone is required.
-                        </span>
-                    }
 
                     <label className='font-bold'>Score:</label>
                     <div className='flex p-3 w-4/5 shadow bg-blue-100 my-2 rounded'>

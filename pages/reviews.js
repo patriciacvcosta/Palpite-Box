@@ -14,8 +14,10 @@ const Review = () => {
 
     const [sucess, setSuccess] = useState(false)
     const [dataReturn, setDataReturn] = useState({})
+    const [showLoading, setShowLoading] = useState(false)
 
     const save = async () => {
+        setShowLoading(true)
         try {
             const response = await fetch('/api/save', {
                 method: 'POST',
@@ -41,6 +43,7 @@ const Review = () => {
     }
 
     const { register, handleSubmit, errors } = useForm();
+    const validator = require("email-validator");
 
     return (
         <div className='pt-6'>
@@ -55,30 +58,72 @@ const Review = () => {
                 <form className='w-1/5 mx-auto' onSubmit={handleSubmit(save)}>
 
                     <label className='font-bold'>Full Name:</label>
-                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Full Name'
-                        onChange={onChange} name='FullName' defaultValue={form.FullName} ref={register({ required: true, minLength: 2 })} />
-                    {errors.FullName && 
+                    <input
+                        type='text'
+                        className='p-4 block shadow bg-blue-100 my-2 rounded'
+                        placeholder='Full Name'
+                        onChange={onChange}
+                        name='FullName'
+                        defaultValue={form.FullName}
+                        ref={
+                            register({
+                                required: true,
+                                minLength: 2
+                            })
+                        }
+                    />
+                    {errors.FullName &&
                         <span className='block italic bold pb-4 text-red-500 text-xs'>
                             This field is required and must have at least 2 characters.
                         </span>
                     }
-                    
+
                     <label className='font-bold'>Email:</label>
-                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Email'
-                        onChange={onChange} name='Email' defaultValue={form.Email} ref={register({ required: true })} />
-                    {errors.Email && 
+                    <input
+                        type='text'
+                        className='p-4 block shadow bg-blue-100 my-2 rounded'
+                        placeholder='Email'
+                        onChange={onChange}
+                        name='Email'
+                        defaultValue={form.Email}
+                        ref={
+                            register({
+                                required: true,
+                                validate: {
+                                    validEmail: value => validator.validate(value)
+                                }
+                            })
+                        }
+                    />
+                    {errors.Email && errors.Email.type === 'required' &&
                         <span className='block italic bold pb-4 text-red-500 text-xs'>
-                            This field is required
+                            This field is required.
+                        </span>
+                    }
+                    {errors.Email && errors.Email.type === 'validEmail' &&
+                        <span className='block italic bold pb-4 text-red-500 text-xs'>
+                            This field must be a valid email.
                         </span>
                     }
 
                     <label className='font-bold'>Phone:</label>
-                    <input type='text' className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='(xxx) xxx-xxxx'
-                        onChange={onChange} name='Phone' defaultValue={form.Phone} 
-                        ref={register({ required: true, pattern: /^(\(\d{3}\)\s\d{3}\-\d{4})$/ })} />
-                    {errors.Phone && 
+                    <input
+                        type='text'
+                        className='p-4 block shadow bg-blue-100 my-2 rounded'
+                        placeholder='(xxx) xxx-xxxx'
+                        onChange={onChange}
+                        name='Phone'
+                        defaultValue={form.Phone}
+                        ref={
+                            register({
+                                required: true,
+                                pattern: /^(\(\d{3}\)\s\d{3}\-\d{4})$/
+                            })
+                        }
+                    />
+                    {errors.Phone &&
                         <span className='block italic bold pb-4 text-red-500 text-xs'>
-                            The phone must be entered using the following pattern: (xxx) xxx-xxxx
+                            Phone is required and must be entered using the following pattern: (xxx) xxx-xxxx.
                         </span>
                     }
 
@@ -88,14 +133,64 @@ const Review = () => {
                             return (
                                 <label key={'score-' + score.toString()} className='block text-center mr-5'>
                                     {score} <br />
-                                    <input type='radio' name='Score' value={score} onChange={onChange} ref={register({ required: true })} />
+                                    <input
+                                        type='radio'
+                                        name='Score'
+                                        value={score}
+                                        onChange={onChange}
+                                        ref={
+                                            register({
+                                                required: true
+                                            })
+                                        }
+                                    />
                                 </label>
                             )
                         })}
                     </div>
-                    {errors.Score  && <span className='block italic bold pb-4 text-red-500 text-xs'>This field is required</span>}
+                    {errors.Score &&
+                        <span className='block italic bold pb-4 text-red-500 text-xs'>
+                            This field is required
+                        </span>
+                    }
 
-                    <button type='submit' className='m-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'>Save</button>
+                    <button type='submit'
+                        className={
+                            showLoading 
+                                ? 'm-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow hidden'
+                                : 'm-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'
+                        }
+                    >                            
+                        Save
+                    </button>
+
+                    <span className={
+                            showLoading 
+                                ? "inline-flex rounded-md shadow-sm" 
+                                : "inline-flex rounded-md shadow-sm hidden"
+                            }
+                        >
+                        <button type="button"
+                            className="inline-flex m-6 bg-blue-400 px-6 py-4 font-bold rounded-lg shadow-lg hover:shadow cursor-not-allowed"
+                            disabled="">
+                            <svg
+                                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24">
+                                <circle
+                                    className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                                </circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+                            Saving...
+                        </button>
+                    </span>
+
                 </form>
             }
 

@@ -23,18 +23,25 @@
 
 ## Description
 
-The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down work into intervals (traditionally 25 minutes in length) separated by short breaks (traditionally 5 minutes).
+"Palpite Box" was developed during the Fullstack Master Week, a workshop offered by DevPleno and taught by Tulio Faria. 
 
-The FocusTimer App lets you configure a Focus and a Break time, with a maximum duration of 1 hour each. That way, you can prepare yourself psychologically to have a more focused work session, knowing that you'll also get to take regular breaks. This will bolster your motivation and keep you creative to complete a task within a set period of time.
+The application consists of an 'opinion box' ('Palpite Box' in Portuguese), where customers can make evaluations about an establishment and receive a discount coupon in exchange!
 
-Transform time from being an enemy to being an ally.
+The app is connected to a Google Spreadsheet, which works as a database, where the business owner can activate/deactivate a discount, change the discount message, and manage received suggestions/coupons generated.
+
+This is a very affordable, interesting, and easy to use feature that can make your establishment more appealing, while attracting more customers.
+
 
 #### Technologies
 
-- Windows Forms
-- C#
+- ReactJS
+- Javascript
+- NextJS
+- Node
+- Tailwind CSS
+- Google Spreadsheets
 
-[Back To The Top](#focustimer-app---pomodoro-clock)
+[Back To The Top](#palpite-box)
 
 ---
 
@@ -63,9 +70,12 @@ Transform time from being an enemy to being an ally.
 
 ## Useful links and resources
 
--   More about the [Pomodoro Technique](https://en.m.wikipedia.org/wiki/Pomodoro_Technique)
+The App was deployed using Vercel, a cloud platform for static sites and Serverless Functions. You can access the app through the link right below:
 
-[Back To The Top](#focustimer-app---pomodoro-clock)
+- https://palpite-box.patriciacvcosta.vercel.app/
+
+
+[Back To The Top](#palpite-box)
 
 ---
 
@@ -75,7 +85,7 @@ MIT License
 
 Copyright &copy; [2020] [Patricia Canuto Vieira da Costa]
 
-[Back To The Top](#focustimer-app---pomodoro-clock)
+[Back To The Top](#palpite-box)
 
 ---
 
@@ -83,4 +93,4 @@ Copyright &copy; [2020] [Patricia Canuto Vieira da Costa]
 
 - LinkedIn - [Patricia Costa](https://www.linkedin.com/in/patricia-costa-885038a0/)
 
-[Back To The Top](#focustimer-app---pomodoro-clock)
+[Back To The Top](#palpite-box)

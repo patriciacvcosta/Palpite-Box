@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import PageTitle from '../components/PageTitle'
 import { useForm } from "react-hook-form";
-import MaskedInput from 'react-text-mask'
 
 const Review = () => {
     const [form, setForm] = useState({
@@ -37,15 +36,21 @@ const Review = () => {
         const value = evt.target.value
         const key = evt.target.name
 
-
-
         setForm(old => ({
             ...old, //gets everything from the old form and copies
             [key]: value
         }))
     }
 
-    const { register, handleSubmit, errors } = useForm();
+    const normalizePhoneNumber = (value) => {
+
+        if (value.match(/^(\d{10})$/)) {
+            return '(' + value.substr(0, 3) + ') ' + value.substr(3, 3) + '-' + value.substr(6, 4)
+        }
+        return value
+    }
+
+    const { register, handleSubmit, errors, control } = useForm();
     const validator = require("email-validator");
 
     return (
@@ -111,7 +116,7 @@ const Review = () => {
 
                     <label className='font-bold'>Phone:</label>
                     <input
-                        type='text'
+                        type='tel'
                         className='p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='(xxx) xxx-xxxx'
                         onChange={onChange}
@@ -120,23 +125,25 @@ const Review = () => {
                         ref={
                             register({
                                 required: true,
-                                pattern: /^(\(\d{3}\)\s\d{3}\-\d{4})$/
+                                validate: {
+                                    phonePattern:
+                                        (value) =>
+                                            /^(\(\d{3}\)\s\d{3}\-\d{4})$/.test(value) ||
+                                            /^(\d{10})$/.test(value)
+                                }
                             })
                         }
+                        onBlur = {(event) => {
+                            const {value} = event.target
+                            event.target.value = normalizePhoneNumber(value)
+                            onChange(event)
+                        }}
                     />
                     {errors.Phone &&
                         <span className='block italic bold pb-4 text-red-500 text-xs'>
                             Phone is required and must follow the pattern: (xxx) xxx-xxxx.
                         </span>
                     }
-
-
-
-                    {/* <MaskedInput 
-                        ref={ref => ref && register(ref.inputElement, registerProps)} name={Phone} 
-                    /> */}
-
-
 
                     <label className='font-bold'>Score:</label>
                     <div className='flex p-3 w-4/5 shadow bg-blue-100 my-2 rounded'>

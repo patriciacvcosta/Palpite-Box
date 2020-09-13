@@ -19,7 +19,7 @@ const Header = () => {
                 <Link href='/contact'>
                     <a className='px-2 hover:underline'>Contact</a>
                 </Link>
-                <a href='/reviews' className='px-2 hover:underline'>Reviews</a>
+                <a href='/opinions-suggestions' className='px-2 hover:underline'>Opinions/Sugestions</a>
             </div>
         </React.Fragment>
     )

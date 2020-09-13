@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import PageTitle from '../components/PageTitle'
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form'
 
 const Review = () => {
     const [form, setForm] = useState({
         FullName: '',
         Email: '',
         Phone: '',
+        Suggestion: '',
         Score: 0
     })
 
@@ -56,10 +57,10 @@ const Review = () => {
     return (
         <div className='pt-6'>
             <PageTitle title='Reviews' />
-            <h1 className='text-2xl text-center font-bold my-4'>Reviews and Suggestions</h1>
+            <h1 className='text-2xl text-center font-bold my-4'>Opinions and Suggestions</h1>
             <p className='text-center mb-6'>
                 Restaurant X always seeks to better serve its customers. <br />
-                This is is why we are always open to hear what you think.
+                This is is why we are always open to hear what you think!
             </p>
 
             {!sucess &&
@@ -68,7 +69,7 @@ const Review = () => {
                     <label className='font-bold'>Full Name:</label>
                     <input
                         type='text'
-                        className='p-4 block shadow bg-blue-100 my-2 rounded'
+                        className='w-full p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='Full Name'
                         onChange={onChange}
                         name='FullName'
@@ -89,7 +90,7 @@ const Review = () => {
                     <label className='font-bold'>Email:</label>
                     <input
                         type='text'
-                        className='p-4 block shadow bg-blue-100 my-2 rounded'
+                        className='w-full p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='Email'
                         onChange={onChange}
                         name='Email'
@@ -117,7 +118,7 @@ const Review = () => {
                     <label className='font-bold'>Phone:</label>
                     <input
                         type='tel'
-                        className='p-4 block shadow bg-blue-100 my-2 rounded'
+                        className='w-full p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='(xxx) xxx-xxxx'
                         onChange={onChange}
                         name='Phone'
@@ -144,12 +145,32 @@ const Review = () => {
                             Phone is required and must follow the pattern: (xxx) xxx-xxxx.
                         </span>
                     }
+                    <label className='font-bold'>Sugestion:</label>
+                    <textarea
+                        type='text'
+                        className='w-full h-40 p-4 block shadow bg-blue-100 my-2 rounded'
+                        placeholder='Your suggestion...'
+                        onChange={onChange}
+                        name='Suggestion'
+                        defaultValue={form.Suggestion}
+                        ref={
+                            register({
+                                required: true,
+                                minLength: 10
+                            })
+                        }
+                    />
+                    {errors.Suggestion &&
+                        <span className='block italic bold pb-4 text-red-500 text-xs'>
+                            This field is required and must have at least 10 characters.
+                        </span>
+                    }
 
                     <label className='font-bold'>Score:</label>
-                    <div className='flex p-3 w-4/5 shadow bg-blue-100 my-2 rounded'>
+                    <div className='w-full flex p-3 shadow bg-blue-100 my-2 rounded'>
                         {scores.map(score => {
                             return (
-                                <label key={'score-' + score.toString()} className='block text-center mr-5'>
+                                <label key={'score-' + score.toString()} className='block text-center ml-4 mr-2'>
                                     {score} <br />
                                     <input
                                         type='radio'
@@ -175,8 +196,8 @@ const Review = () => {
                     <button type='submit'
                         className={
                             showLoading
-                                ? 'm-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow hidden'
-                                : 'm-6 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'
+                                ? 'm-6 ml-16 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow hidden'
+                                : 'm-6 ml-16 bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'
                         }
                     >
                         Save
@@ -189,7 +210,7 @@ const Review = () => {
                     }
                     >
                         <button type="button"
-                            className="inline-flex m-6 bg-blue-400 px-6 py-4 font-bold rounded-lg shadow-lg hover:shadow cursor-not-allowed"
+                            className="inline-flex m-6 ml-16 bg-blue-400 px-6 py-4 font-bold rounded-lg shadow-lg hover:shadow cursor-not-allowed"
                             disabled="">
                             <svg
                                 className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"

@@ -40,6 +40,7 @@ export default async (req, res) => {
             'Full Name': data.FullName,
             Email: data.Email,
             Phone: data.Phone,
+            Suggestion: data.Suggestion,
             Score: parseInt(data.Score),
             'Review Date': moment().format('DD/MM/YYYY, HH:mm:ss'),
             Coupon,

@@ -13,12 +13,12 @@ const Index = () => {
             <PageTitle title='Welcome!' />
             <p className='mt-12 text-center font-bold'>
                 Restaurant X always seeks to better serve its customers. <br />
-                This is is why we are always open to hear what you think.
+                This is is why we are always open to hear what you think!
             </p>
             <div className='text-center my-12'>
-                <Link href='/reviews'>
+                <Link href='/opinions-suggestions'>
                     <a className='bg-blue-400 px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'>
-                        Give your review or suggestion
+                        Give us your Opinion / Suggestion here!
                     </a>
                 </Link>
             </div>

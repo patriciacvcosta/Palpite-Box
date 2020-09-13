@@ -145,7 +145,7 @@ const Review = () => {
                             Phone is required and must follow the pattern: (xxx) xxx-xxxx.
                         </span>
                     }
-                    <label className='font-bold'>Opinions and/or Sugestions:</label>
+                    <label className='font-bold'>Opinions and/or Suggestions:</label>
                     <textarea
                         type='text'
                         className='w-full h-40 p-4 block shadow bg-blue-100 my-2 rounded'

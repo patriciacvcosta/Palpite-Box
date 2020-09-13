@@ -14,7 +14,7 @@
 <!-- You're sections headers will be used to reference location of destination. -->
 
 - [Description](#description)
-- [How To Use](#how-to-use)
+- [Running and Deploying the Application](#running-and-deploying-the-application)
 - [Useful links and resources](#Useful-links-and-resources)
 - [License](#license)
 - [Author Info](#author-info)
@@ -27,32 +27,40 @@
 
 The application consists of an 'opinion box' ('Palpite Box' in Portuguese), where customers can make evaluations about an establishment and receive a discount coupon in exchange!
 
-The app is connected to a Google Spreadsheet, which works as a database, where the business owner can activate/deactivate a discount, change the discount message, and manage received suggestions/coupons generated.
+The app is connected to a Google Spreadsheet, which works as a database, where the business owner can activate/deactivate a discount, change the discount message, and manage received suggestions/coupons generated. 
 
-This is a very affordable, interesting, and easy to use feature that can make your establishment more appealing, while attracting more customers.
+This is a very affordable, interesting, and easy to use software that can make your establishment more appealing, while attracting more customers.
 
 
 #### Technologies
 
-- ReactJS
-- Javascript
-- NextJS
-- Node
-- Tailwind CSS
+- [React](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [Node](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 - Google Spreadsheets
 
 [Back To The Top](#palpite-box)
 
 ---
 
-## How To Use
+## Running and Deploying the Application
 
-* Set a duration for your Focus and Break sessions (or only one of them)
-* Press Start button and the timer will start running
-* If you set up both Focus and Break sessions, the app will automatically start running your Break session after the Focus session is over
-* A sound will play everytime the progress bar is complete / the timer hits 00:00
-* You can hit the Stop button at any time to cancel the activty
+* First, you need NodeJS and NPM installed on your machine. After that, you can go ahead and run the following:
 
+```
+npm install
+npm run dev
+```
+
+* In order to run the application properly, you need to create the environment variables to configure access to Google Spreadsheets.
+
+```
+SHEET_CLIENT_EMAIL=<client email from service credential>
+SHEET_PRIVATE_KEY=<service credential private key>
+SHEET_DOC_ID=<sheet id>
+```
 
 
 <!-- #### Installation -->
@@ -70,9 +78,19 @@ This is a very affordable, interesting, and easy to use feature that can make yo
 
 ## Useful links and resources
 
-The App was deployed using Vercel, a cloud platform for static sites and Serverless Functions. You can access the app through the link right below:
+* The App was deployed using Vercel, a cloud platform for static sites and Serverless Functions. You can access the app through the link right below:
 
-- https://palpite-box.patriciacvcosta.vercel.app/
+        https://palpite-box.patriciacvcosta.vercel.app/
+
+* The React Hook Form library was used to validate all inputs, making them required, creating patterns, setting minimum/maximum lenght, and other specifications.
+        
+        https://react-hook-form.com/
+
+
+* The Email Validator library was used together with React Hook Form library to validate the Email entry, requiring a valid email address.
+
+        https://www.npmjs.com/package/email-validator
+
 
 
 [Back To The Top](#palpite-box)

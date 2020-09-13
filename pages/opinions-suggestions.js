@@ -145,11 +145,11 @@ const Review = () => {
                             Phone is required and must follow the pattern: (xxx) xxx-xxxx.
                         </span>
                     }
-                    <label className='font-bold'>Sugestion:</label>
+                    <label className='font-bold'>Opinions and/or Sugestions:</label>
                     <textarea
                         type='text'
                         className='w-full h-40 p-4 block shadow bg-blue-100 my-2 rounded'
-                        placeholder='Your suggestion...'
+                        placeholder='Your opinion and/or suggestion...'
                         onChange={onChange}
                         name='Suggestion'
                         defaultValue={form.Suggestion}

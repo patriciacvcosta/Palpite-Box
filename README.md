@@ -1,8 +1,10 @@
 # Palpite Box
-
-
-
-![Alt text](public/Palpite-Box-Image.jpg?raw=true "Title")
+<h1 align='center'>
+    <img src='public/Palpite-Box-Image.jpg'
+    alt="Markdown Monster icon"
+        style="float: left; display: block; margin-left: auto; margin-right: auto; width: 100%;"
+    />
+</h1>
 
 <p align="center"> Palpite Box App Window<p>
 

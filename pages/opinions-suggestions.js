@@ -64,7 +64,7 @@ const Review = () => {
             </p>
 
             {!sucess &&
-                <form className=' sm:w-auto md:w-full lg:w-1/5 xl:w-1/5 mx-auto' onSubmit={handleSubmit(save)}>
+                <form className='sm:w-auto md:w-full lg:w-1/5 xl:w-1/5 mx-auto' onSubmit={handleSubmit(save)}>
 
                     <label className='font-bold'>Full Name:</label>
                     <input

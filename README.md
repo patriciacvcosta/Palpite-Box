@@ -80,16 +80,16 @@ SHEET_DOC_ID=<sheet id>
 
 * The App was deployed using Vercel, a cloud platform for static sites and Serverless Functions. You can access the app through the link right below:
 
-        https://palpite-box.patriciacvcosta.vercel.app/
+    https://palpite-box.patriciacvcosta.vercel.app/
 
 * The React Hook Form library was used to validate all inputs, making them required, creating patterns, setting minimum/maximum lenght, and other specifications.
         
-        https://react-hook-form.com/
+    https://react-hook-form.com/
 
 
 * The Email Validator library was used together with React Hook Form library to validate the Email entry, requiring a valid email address.
 
-        https://www.npmjs.com/package/email-validator
+    https://www.npmjs.com/package/email-validator
 
 
 

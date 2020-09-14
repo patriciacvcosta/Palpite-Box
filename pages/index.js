@@ -15,9 +15,9 @@ const Index = () => {
                 Restaurant X always seeks to better serve its customers. <br />
                 This is is why we are always open to hear what you think!
             </p>
-            <div className='text-center my-12'>
+            <div className='text-center my-12 sm:w-auto md:w-full lg:w-11/12 xl:w-11/12 mx-auto'>
                 <Link href='/opinions-suggestions'>
-                    <a className='sm:w-auto md:w-full lg:w-1/5 xl:w-1/5 bg-blue-400 mx-auto px-12 py-4 font-bold rounded-lg shadow-lg hover:shadow'>
+                    <a className=' bg-blue-400 mx-auto px-4 py-4 font-bold rounded-lg shadow-lg hover:shadow'>
                         Give us your Opinion / Suggestion here!
                     </a>
                 </Link>

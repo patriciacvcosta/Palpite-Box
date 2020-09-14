@@ -64,12 +64,12 @@ const Review = () => {
             </p>
 
             {!sucess &&
-                <form className='w-1/5 mx-auto' onSubmit={handleSubmit(save)}>
+                <form className=' sm:w-auto md:w-full lg:w-1/5 xl:w-1/5 mx-auto' onSubmit={handleSubmit(save)}>
 
                     <label className='font-bold'>Full Name:</label>
                     <input
                         type='text'
-                        className='w-full mx-auto p-4 block shadow bg-blue-100 my-2 rounded'
+                        className='w-full p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='Full Name'
                         onChange={onChange}
                         name='FullName'
@@ -90,7 +90,7 @@ const Review = () => {
                     <label className='font-bold'>Email:</label>
                     <input
                         type='text'
-                        className='w-full mx-auto p-4 block shadow bg-blue-100 my-2 rounded'
+                        className='w-full p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='Email'
                         onChange={onChange}
                         name='Email'
@@ -118,7 +118,7 @@ const Review = () => {
                     <label className='font-bold'>Phone:</label>
                     <input
                         type='tel'
-                        className='w-full mx-auto p-4 block shadow bg-blue-100 my-2 rounded'
+                        className='w-full p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='(xxx) xxx-xxxx'
                         onChange={onChange}
                         name='Phone'
@@ -148,7 +148,7 @@ const Review = () => {
                     <label className='font-bold'>Opinions and/or Suggestions:</label>
                     <textarea
                         type='text'
-                        className='w-full mx-auto h-40 p-4 block shadow bg-blue-100 my-2 rounded'
+                        className='w-full h-40 p-4 block shadow bg-blue-100 my-2 rounded'
                         placeholder='Your opinion and/or suggestion...'
                         onChange={onChange}
                         name='Suggestion'
@@ -167,7 +167,7 @@ const Review = () => {
                     }
 
                     <label className='font-bold'>Score:</label>
-                    <div className='w-full mx-auto flex p-3 shadow bg-blue-100 my-2 rounded'>
+                    <div className='w-full flex p-3 shadow bg-blue-100 my-2 rounded'>
                         {scores.map(score => {
                             return (
                                 <label key={'score-' + score.toString()} className='block text-center ml-4 mr-2'>
